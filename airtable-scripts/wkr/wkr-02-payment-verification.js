@@ -4,7 +4,8 @@ console.log(inputConfig);
 const table = base.getTable("Manual Payments");
 let queryResult = await table.selectRecordAsync(inputConfig.recordId, { 
     fields: ["ID", "Email", "First Name", "Last Name", "Mobile Number",
-            "Membership", "Payment Verified?", "Verified Date", "Last Modified Time"]
+            "Membership", "Payment Verified?", "Verified Date", "Last Modified Time",
+            "Mode of Payment"]
 });
 
 const payor = {
@@ -17,18 +18,20 @@ const payor = {
     "membership": queryResult?.getCellValue("Membership").name,
     "paymentVerificationStatus": queryResult?.getCellValue("Payment Verified?").name,
     "reviewDate": queryResult?.getCellValue("Verified Date"),
-    "lastUpdatedTime": queryResult?.getCellValue("Last Modified Time")
+    "lastUpdatedTime": queryResult?.getCellValue("Last Modified Time"),
+    "modeOfPayment": queryResult?.getCellValue("Mode of Payment").name
 };
 
 console.log(payor);
 
 try {
     // Manual Payments: 03 Payment Verification Process
-    let response = await fetch('<INSERT WEBHOOK URL HERE>', {
+    let response = await fetch('', {
         method: 'POST',
         body: JSON.stringify(payor),
         headers: {
             'Content-Type': 'application/json',
+            'x-make-apikey': input.secret("AirTable to Make API Key")
         },
     });
     console.log(response.status);

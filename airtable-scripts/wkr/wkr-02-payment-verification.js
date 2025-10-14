@@ -26,7 +26,7 @@ console.log(payor);
 
 try {
     // Manual Payments: 03 Payment Verification Process
-    let response = await fetch('https://hook.us2.make.com/kvpeg3p68dtpnud3rixapd6x235ocdqn', {
+    let response = await fetch('', {
         method: 'POST',
         body: JSON.stringify(payor),
         headers: {

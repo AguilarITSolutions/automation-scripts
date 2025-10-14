@@ -23,7 +23,7 @@ console.log(payor);
 
 try {
     // Manual Payments: 02 Send Email Confirmation (make.com)
-    let response = await fetch('https://hook.us2.make.com/eyshlbx795ybtosia8rgtc6jgaobdlip', {
+    let response = await fetch('', {
         method: 'POST',
         body: JSON.stringify(payor),
         headers: {

@@ -10,7 +10,7 @@ let queryResult = await table.selectRecordAsync(inputConfig.recordId, {
 const payor = {
     "airtableRecordId": inputConfig.recordId,
     "manualPaymentTableId": queryResult?.getCellValue("ID"),
-    "email": queryResult?.getCellValue("Email"),
+    "email": queryResult?.getCellValue("Email")?.trim(),
     "firstName": queryResult?.getCellValue("First Name"),
     "lastName": queryResult?.getCellValue("Last Name"),
     "mobileNumber": queryResult?.getCellValue("Mobile Number"),
